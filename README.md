@@ -1,1 +1,0 @@
-# StudentPortAL
