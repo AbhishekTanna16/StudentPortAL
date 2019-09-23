@@ -1,0 +1,322 @@
+﻿@model ApplicantPortal.Models.StudentDTO.StudentStep1
+
+@using (Html.BeginForm("StudentStep1", "Applicant", FormMethod.Post, new { @Id = "Form1",@enctype="multipart/form-data" }))
+{
+    <div class="row" style="float:left;margin:10px">
+        <div class="col-md-4">
+            <button class="btn btn-primary" id="Step1Btn" type="button">Next</button>
+        </div>
+    </div>
+    <div class="row" style="border:1px solid #e9dfdf;margin:0;box-sizing: border-box;padding:10px">
+
+
+        <div class="col-md-12">
+
+            <h4 style="margin-left:0"><b>1</b> .Name of the Board from which you have passed the Board exam? Please fill the Year Of Exan and Roll Number as in Admit Card /</h4>
+            <h4 style="margin-left:0">आपने किेस शिक्षा बौडँ से दसवी ऊतीँण की है?</h4>
+        </div>
+        <div class="col-md-12" style="border:1px solid #e9dfdf;margin:0;box-sizing: border-box;padding:5px">
+            <div class="row">
+                <div class="col-md-4">
+                    <span>Name of the Examination board <span class="text-danger">*</span></span>
+                </div>
+                <div class="col-md-4">
+                    <span>Year of Passing <span class="text-danger">*</span></span>
+                </div>
+                <div class="col-md-4">
+                    <span>Exam Type <span class="text-danger">*</span></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.DropDownListFor(
+                        x => x.BoardId,
+                        new SelectList(Model.Boards, "Id", "Name"),
+                        "SELECT", new { @class = "form-control" }
+                    )
+                    @Html.ValidationMessageFor(x => x.BoardId)
+
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(
+                        x => x.PassingYearId,
+                        new SelectList(Model.Years, "Id", "Name"),
+                        "SELECT", new { @class = "form-control" }
+                    )
+                    @Html.ValidationMessageFor(x => x.PassingYearId)
+                </div>
+                <div class="col-md-4">
+                    @Html.RadioButtonFor(model => model.ExamType, "Annual")<label class="control-label">Annual</label>
+                    @Html.RadioButtonFor(model => model.ExamType, "Improvement")<label class="control-label">Improvement</label>
+                    <br />
+                    @Html.ValidationMessageFor(m => m.ExamType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <span>Date of Birth<span class="text-danger">*</span></span>
+                </div>
+                <div class="col-md-4">
+                    <span>Roll Code<span class="text-danger">*</span></span>
+                </div>
+                <div class="col-md-4">
+                    <span>Roll Number<span class="text-danger">*</span></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @*<input name="DOB" id="DOB" type="date" class="form-control" />*@
+                    @Html.TextBoxFor(m => m.BOD, new { @class = "form-control", @type = "date" })
+                    @*<input name="RollCode" id="RollCode" type="text" class="form-control" />*@
+                    @Html.ValidationMessageFor(m => m.BOD, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.RollCode, new { @class = "form-control" })
+                    @*<input name="RollCode" id="RollCode" type="text" class="form-control" />*@
+                    @Html.ValidationMessageFor(m => m.RollCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.RollNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RollNumber, "", new { @class = "text-danger" })
+                    @*<input name="RollNumber" id="RollNumber" type="text" class="form-control" />*@
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="col-md-7" style="margin-top:5px">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <span><b>2.</b> Applicant's Name<span class="text-danger"></span></span>
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(m => m.ApplicantName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ApplicantName, "", new { @class = "text-danger" })
+                    @*<input type="text" id="ApplicantName" class="form-control" />*@
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+
+                <div class="col-md-4">
+                    <span><b>3</b> Father's Name<span class="text-danger">*</span></span>
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(m => m.FatherName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FatherName, "", new { @class = "text-danger" })
+                    @*<input type="text" id="FatherName" class="form-control" />*@
+                </div>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <div class="col-md-4">
+                    <span><b>4.</b> Mother's Name<span class="text-danger">*</span></span>
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(m => m.MotherName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MotherName, "", new { @class = "text-danger" })
+                    @*<input type="text" id="MotherName" class="form-control" />*@
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-12" style="border:1px solid #e9dfdf;box-sizing: border-box;margin-top:5px">
+                    <span> Upload your Photo<span class="text-danger"></span></span>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.PostedPhoto, new { type = "file", accept = "image/*", onchange = "previewImage(event,'photoimg')" })
+                            @Html.ValidationMessageFor(m => m.PostedPhoto, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            <img src=""
+                                 alt="" id="photoimg"
+                                 class="img-thumbnail" width="150" />
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="clearfix"></div>
+                <div class="col-md-12" style="border:1px solid #e9dfdf;box-sizing: border-box;margin-top:5px">
+                    <span> Upload your Signature<span class="text-danger"></span></span>
+
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.PostedSignature, new { type = "file",
+                           accept = "image/*", onchange = "previewImage(event,'signimg')" })
+                            @Html.ValidationMessageFor(m => m.PostedSignature, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            <img src=""
+                                 alt="" id="signimg"
+                                 class="img-thumbnail" width="150" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <hr />
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <h4 style="margin-left:0"><b>5.</b> Details of Mark/Grade secured in 10th Board Examination<span class="text-danger">*</span></h4>
+            <h5 style="color:blue">Note:In the below field you need to select Grade Points, if you select CBSE & year as 2010 or later as Year Of Passing</h5>
+        </div>
+        <div class="col-md-12">
+            <ol type="a">
+                <li>
+                    <div class="row" style="border:1px solid #e9dfdf;box-sizing:border-box;margin-top:10px;padding-bottom:10px">
+
+
+
+                        <div class="col-md-6" style="background-color:cadetblue">
+                            <span style="color:white;font-weight:700">Maximum Marks</span>
+                        </div>
+                        <div class="col-md-6" style="background-color:cadetblue">
+                            <span style="color:white;font-weight:700">Total Marks Secured</span>
+                        </div>
+
+
+
+                        <div class="col-md-6" style="margin-top:10px">
+                            <input type="text" name="MaximumMarks" class="form-control" value="" />
+                        </div>
+                        <div class="col-md-6" style="margin-top:10px">
+                            <input type="text" name="ToalSecuredMarks" class="form-control" value="" />
+                        </div>
+                    </div>
+
+
+                </li>
+                <li>
+                    <div class="row" style="margin-top:10px">
+                        <div class="col-md-12">
+                            <span>Have you Passed 10th Borad exam Compartmently?</span>
+                            <input type="radio" name="Is10Passed" value="Yes" />Yes
+                            <input type="radio" name="Is10Passed" value="No" checked />No
+                        </div>
+                    </div>
+
+
+
+                </li>
+            </ol>
+
+        </div>
+        <hr />
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <h4 style="margin-left:0"><b>6.</b> Record Of an Educational institution last attended from which you have passed 10th examination<span class="text-danger">*</span></h4>
+
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span>Name Of School<span class="text-danger">*</span></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.SchoolName, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SchoolName, "", new { @class = "text-danger" })
+                            @*<input type="text" class="form-control" id="SchoolName" name="SchoolName" />*@
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <span>Address Of School<span class="text-danger">*</span></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            @*<input type="text" class="form-control" id="SchoolAddress" name="SchoolAddress" />*@
+                            @Html.TextBoxFor(m => m.SchoolAddress, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SchoolAddress, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6" style="margin-top:10px">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span>District<span class="text-danger">*</span></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(
+                                 x => x.DistrictId,
+                                new SelectList(Model.Districts, "Id", "Name"),
+                                "SELECT", new { @class = "form-control" }
+                            )
+                            @Html.ValidationMessageFor(x => x.DistrictId)
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6" style="margin-top:10px">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span>Year Of Joining<span class="text-danger">*</span></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(
+                                x => x.YearOfJoin,
+                               new SelectList(Model.Years, "Id", "Name"),
+                               "SELECT", new { @class = "form-control" }
+                           )
+                            @Html.ValidationMessageFor(x => x.YearOfJoin)
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6" style="margin-top:10px">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span>Year Of Leaving From School<span class="text-danger">*</span></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(
+                                 x => x.YearOfLeaving,
+                                new SelectList(Model.Years, "Id", "Name"),
+                                "SELECT", new { @class = "form-control" }
+                            )
+                            @Html.ValidationMessageFor(x => x.YearOfLeaving)
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+}

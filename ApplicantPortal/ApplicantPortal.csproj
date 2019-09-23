@@ -153,6 +153,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CommonFunctions.cs" />
+    <Compile Include="Models\CommonUtilities.cs" />
+    <Compile Include="Models\Common\Common.cs" />
+    <Compile Include="Models\CreatePara.cs" />
+    <Compile Include="Models\dalc.cs" />
+    <Compile Include="Models\DDLBinding.cs" />
+    <Compile Include="Models\EncryptDecrypt.cs" />
+    <Compile Include="Models\StudentDTO\StudentStep1.cs" />
+    <Compile Include="Models\StudentDTO\StudentStep2.cs" />
+    <Compile Include="Models\StudentDTO\StudentStep3.cs" />
+    <Compile Include="Models\StudentDTO\StudentSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +181,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -181,7 +193,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -196,10 +210,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Applicant\Index.cshtml" />
+    <Content Include="Views\Shared\_StudentStep1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
