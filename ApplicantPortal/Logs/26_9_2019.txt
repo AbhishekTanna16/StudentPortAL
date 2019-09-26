@@ -1,0 +1,33 @@
+Error on 9/26/2019 8:12:57 AM ,Exception Message:Format String can be only "D", "d", "N", "n", "P", "p", "B", "b", "X" or "x".,Inner Message:,Line:   at System.Guid.ToString(String format, IFormatProvider provider)
+   at System.Guid.ToString(String format)
+   at ApplicantPortal.Controllers.ApplicantController.StudentStep3(StudentStep3 data),Additional Msg:Format String can be only "D", "d", "N", "n", "P", "p", "B", "b", "X" or "x".
+Error on 9/26/2019 8:13:25 AM ,Exception Message:Object reference not set to an instance of an object.,Inner Message:,Line:   at ApplicantPortal.Controllers.ApplicantController.StudentStep3(StudentStep3 data),Additional Msg: Object reference not set to an instance of an object.
+Error on 9/26/2019 8:14:16 AM ,Exception Message:Input string was not in a correct format.,Inner Message:,Line:   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int16.Parse(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt16(String value)
+   at ApplicantPortal.Controllers.ApplicantController.StudentStep3(StudentStep3 data),Additional Msg: Input string was not in a correct format.
+Error on 9/26/2019 8:16:18 AM ,Exception Message:Input string was not in a correct format.,Inner Message:,Line:   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int16.Parse(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt16(String value)
+   at ApplicantPortal.Controllers.ApplicantController.StudentStep3(StudentStep3 data),Additional Msg: Input string was not in a correct format.
+Error on 9/26/2019 8:18:02 AM ,Exception Message:Format String can be only "D", "d", "N", "n", "P", "p", "B", "b", "X" or "x".,Inner Message:,Line:   at System.Guid.ToString(String format, IFormatProvider provider)
+   at System.Guid.ToString(String format)
+   at ApplicantPortal.Controllers.ApplicantController.StudentStep3(StudentStep3 data) in F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\Controllers\ApplicantController.cs:line 172,Additional Msg: Format String can be only "D", "d", "N", "n", "P", "p", "B", "b", "X" or "x".
+Error on 9/26/2019 8:18:26 AM ,Exception Message:Format String can be only "D", "d", "N", "n", "P", "p", "B", "b", "X" or "x".,Inner Message:,Line:   at System.Guid.ToString(String format, IFormatProvider provider)
+   at System.Guid.ToString(String format)
+   at ApplicantPortal.Controllers.ApplicantController.StudentStep3(StudentStep3 data) in F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\Controllers\ApplicantController.cs:line 172,Additional Msg: Format String can be only "D", "d", "N", "n", "P", "p", "B", "b", "X" or "x".
+Error on 9/26/2019 8:18:36 AM ,Exception Message:Format String can be only "D", "d", "N", "n", "P", "p", "B", "b", "X" or "x".,Inner Message:,Line:   at System.Guid.ToString(String format, IFormatProvider provider)
+   at System.Guid.ToString(String format)
+   at ApplicantPortal.Controllers.ApplicantController.StudentStep3(StudentStep3 data) in F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\Controllers\ApplicantController.cs:line 172,Additional Msg: Format String can be only "D", "d", "N", "n", "P", "p", "B", "b", "X" or "x".
+Error on 9/26/2019 8:22:22 AM ,Exception Message:Input string was not in a correct format.,Inner Message:,Line:   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int16.Parse(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt16(String value)
+   at ApplicantPortal.Controllers.ApplicantController.StudentStep3(StudentStep3 data) in F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\Controllers\ApplicantController.cs:line 207,Additional Msg: Input string was not in a correct format.
+Error on 9/26/2019 8:22:54 AM ,Exception Message:Input string was not in a correct format.,Inner Message:,Line:   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int16.Parse(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt16(String value)
+   at ApplicantPortal.Controllers.ApplicantController.StudentStep3(StudentStep3 data) in F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\Controllers\ApplicantController.cs:line 207,Additional Msg: Input string was not in a correct format.

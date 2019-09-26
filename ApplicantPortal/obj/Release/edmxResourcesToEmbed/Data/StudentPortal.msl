@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StudAppDBModelStoreContainer" CdmEntityContainer="StudAppDBEntities">
+    <FunctionImportMapping FunctionImportName="GetAutoCompleteData" FunctionName="StudAppDBModel.Store.GetAutoCompleteData" />
+    <EntitySetMapping Name="AppCollegeMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.AppCollegeMaster">
+        <MappingFragment StoreEntitySet="AppCollegeMaster">
+          <ScalarProperty Name="StremId" ColumnName="StremId" />
+          <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="ApllicationId" ColumnName="ApllicationId" />
+          <ScalarProperty Name="AppCollegeId" ColumnName="AppCollegeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.ApplicationMaster">
+        <MappingFragment StoreEntitySet="ApplicationMaster">
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsCondition2" ColumnName="IsCondition2" />
+          <ScalarProperty Name="IsCondition1" ColumnName="IsCondition1" />
+          <ScalarProperty Name="SpecialAbied" ColumnName="SpecialAbied" />
+          <ScalarProperty Name="EWS" ColumnName="EWS" />
+          <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+          <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="HouseAddress" ColumnName="HouseAddress" />
+          <ScalarProperty Name="Block" ColumnName="Block" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="MotherTongue" ColumnName="MotherTongue" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="YearOfLeaving" ColumnName="YearOfLeaving" />
+          <ScalarProperty Name="YearOfJoin" ColumnName="YearOfJoin" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
+          <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+          <ScalarProperty Name="Is10Compartmentally" ColumnName="Is10Compartmentally" />
+          <ScalarProperty Name="S10TotalMarks" ColumnName="S10TotalMarks" />
+          <ScalarProperty Name="S10MaxiMarks" ColumnName="S10MaxiMarks" />
+          <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+          <ScalarProperty Name="RollNumber" ColumnName="RollNumber" />
+          <ScalarProperty Name="RollCode" ColumnName="RollCode" />
+          <ScalarProperty Name="BOD" ColumnName="BOD" />
+          <ScalarProperty Name="ExamType" ColumnName="ExamType" />
+          <ScalarProperty Name="PassingYearId" ColumnName="PassingYearId" />
+          <ScalarProperty Name="BoardId" ColumnName="BoardId" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="ApplicationNumber" ColumnName="ApplicationNumber" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlockMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.BlockMaster">
+        <MappingFragment StoreEntitySet="BlockMaster">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodGroupMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.BloodGroupMaster">
+        <MappingFragment StoreEntitySet="BloodGroupMaster">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoardMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.BoardMaster">
+        <MappingFragment StoreEntitySet="BoardMaster">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BoardName" ColumnName="BoardName" />
+          <ScalarProperty Name="BoardId" ColumnName="BoardId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollegeMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.CollegeMaster">
+        <MappingFragment StoreEntitySet="CollegeMaster">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+          <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DistrictMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.DistrictMaster">
+        <MappingFragment StoreEntitySet="DistrictMaster">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GenderMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.GenderMaster">
+        <MappingFragment StoreEntitySet="GenderMaster">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotherToungeMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.MotherToungeMaster">
+        <MappingFragment StoreEntitySet="MotherToungeMaster">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NationalityMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.NationalityMaster">
+        <MappingFragment StoreEntitySet="NationalityMaster">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReligionMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.ReligionMaster">
+        <MappingFragment StoreEntitySet="ReligionMaster">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StateMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.StateMaster">
+        <MappingFragment StoreEntitySet="StateMaster">
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StreamMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.StreamMaster">
+        <MappingFragment StoreEntitySet="StreamMaster">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="StreamName" ColumnName="StreamName" />
+          <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YearMasters">
+      <EntityTypeMapping TypeName="StudAppDBModel.YearMaster">
+        <MappingFragment StoreEntitySet="YearMaster">
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="YearId" ColumnName="YearId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudAppDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AppCollegeMaster">
+    <Key>
+      <PropertyRef Name="AppCollegeId" />
+    </Key>
+    <Property Name="AppCollegeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApllicationId" Type="int" Nullable="false" />
+    <Property Name="DistrictId" Type="int" Nullable="false" />
+    <Property Name="CollegeId" Type="int" Nullable="false" />
+    <Property Name="StremId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationMaster">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="BoardId" Type="int" Nullable="false" />
+    <Property Name="PassingYearId" Type="int" Nullable="false" />
+    <Property Name="ExamType" Type="int" Nullable="false" />
+    <Property Name="BOD" Type="date" Nullable="false" />
+    <Property Name="RollCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RollNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApplicantName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="MotherName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="S10MaxiMarks" Type="int" Nullable="false" />
+    <Property Name="S10TotalMarks" Type="int" Nullable="false" />
+    <Property Name="Is10Compartmentally" Type="bit" Nullable="false" />
+    <Property Name="SchoolName" Type="nvarchar" MaxLength="100" />
+    <Property Name="SchoolAddress" Type="nvarchar(max)" />
+    <Property Name="DistrictId" Type="int" />
+    <Property Name="YearOfJoin" Type="int" />
+    <Property Name="YearOfLeaving" Type="int" />
+    <Property Name="Gender" Type="nchar" MaxLength="10" />
+    <Property Name="MotherTongue" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
+    <Property Name="Religion" Type="nvarchar" MaxLength="50" />
+    <Property Name="BloodGroup" Type="nchar" MaxLength="10" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="District" Type="nvarchar" MaxLength="50" />
+    <Property Name="Block" Type="nvarchar" MaxLength="50" />
+    <Property Name="HouseAddress" Type="nvarchar(max)" />
+    <Property Name="PinCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="TelephoneNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReservationId" Type="int" />
+    <Property Name="EWS" Type="int" />
+    <Property Name="SpecialAbied" Type="int" />
+    <Property Name="IsCondition1" Type="bit" />
+    <Property Name="IsCondition2" Type="bit" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Photo" Type="nvarchar(max)" />
+    <Property Name="Signature" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="BlockMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="BloodGroupMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BoardMaster">
+    <Key>
+      <PropertyRef Name="BoardId" />
+    </Key>
+    <Property Name="BoardId" Type="int" Nullable="false" />
+    <Property Name="BoardName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CollegeMaster">
+    <Key>
+      <PropertyRef Name="CollegeId" />
+    </Key>
+    <Property Name="CollegeId" Type="int" Nullable="false" />
+    <Property Name="CollegeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DistrictMaster">
+    <Key>
+      <PropertyRef Name="DistrictId" />
+    </Key>
+    <Property Name="DistrictId" Type="int" Nullable="false" />
+    <Property Name="DistrictName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GenderMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MotherToungeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="NationalityMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ReligionMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="StateMaster">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="StreamMaster">
+    <Key>
+      <PropertyRef Name="StreamId" />
+    </Key>
+    <Property Name="StreamId" Type="int" Nullable="false" />
+    <Property Name="StreamName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="YearMaster">
+    <Key>
+      <PropertyRef Name="YearId" />
+    </Key>
+    <Property Name="YearId" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+  </EntityType>
+  <Function Name="GetAutoCompleteData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
+    <Parameter Name="Count" Type="int" Mode="In" />
+    <Parameter Name="TableName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="DisplayColumnName" Type="nvarchar" Mode="In" />
+    <Parameter Name="ValueColumnName" Type="nvarchar" Mode="In" />
+    <Parameter Name="WhereClause" Type="nvarchar" Mode="In" />
+    <Parameter Name="Type" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="StudAppDBModelStoreContainer">
+    <EntitySet Name="AppCollegeMaster" EntityType="Self.AppCollegeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationMaster" EntityType="Self.ApplicationMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlockMaster" EntityType="Self.BlockMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BloodGroupMaster" EntityType="Self.BloodGroupMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BoardMaster" EntityType="Self.BoardMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CollegeMaster" EntityType="Self.CollegeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DistrictMaster" EntityType="Self.DistrictMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GenderMaster" EntityType="Self.GenderMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MotherToungeMaster" EntityType="Self.MotherToungeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NationalityMaster" EntityType="Self.NationalityMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReligionMaster" EntityType="Self.ReligionMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StreamMaster" EntityType="Self.StreamMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YearMaster" EntityType="Self.YearMaster" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

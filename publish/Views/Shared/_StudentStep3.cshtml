@@ -1,0 +1,68 @@
+﻿@model ApplicantPortal.Models.StudentDTO.StudentStep3
+
+@using (Html.BeginForm("StudentStep3", "Applicant", FormMethod.Post, new { @Id = "Form3" }))
+{
+    <div class="row" style="float:left;margin:10px">
+        <div class="col-md-12">
+            <button class="btn btn-primary" id="Step3PrevBtn" type="button">Previous</button>&nbsp;
+            <button class="btn btn-primary" id="Step3Btn" type="button">Submit</button>
+        </div>
+    </div>
+    <div class="row" style="border:1px solid #e9dfdf;margin:0;box-sizing: border-box;padding:10px">
+        <div class="col-md-12">
+            <span>11. Please Fill the Option of the Colleges & Stream In Which you want to get admission.</span>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 style="background:#abe222;border:0.5px solid #abe222;padding:10px;box-sizing:border-box">Enter Here for 1st Option</h5>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        a.<span> District Name<span class="text-danger">*</span></span>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(
+        x => x.step3DistrictId,
+        new SelectList(Model.step3Districts, "Id", "Name"),
+        "SELECT", new { @class = "form-control" }
+    )
+                        @Html.ValidationMessageFor(x => x.step3DistrictId)
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12" style="margin-top:10px">
+                    <div class="col-md-3">
+                        b.<span> College Name<span class="text-danger">*</span></span>
+                    </div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(
+         x => x.step3CollegeId,
+         new SelectList(Model.step3Colleges, "Id", "Name"),
+         "SELECT", new { @class = "form-control" }
+     )
+                        @Html.ValidationMessageFor(x => x.step3CollegeId)
+                    </div>
+                    <div class="col-md-2">
+                        c.<span> Stream<span class="text-danger">*</span></span>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(
+         x => x.StreamId,
+         new SelectList(Model.step3Streams, "Id", "Name"),
+         "SELECT", new { @class = "form-control" }
+     )
+                        @Html.ValidationMessageFor(x => x.StreamId)
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <h5>
+                        Do you want to fill more Options for applying in the Other Colleges and Subjects?<input type="radio" name="MoreOptions" value="YES" />Yes
+                        <input type="radio" name="MoreOptions" value="NO" />No
+                    </h5>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

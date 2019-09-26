@@ -1,0 +1,272 @@
+﻿@model ApplicantPortal.Models.StudentDTO.StudentStep2
+
+@using (Html.BeginForm("StudentStep2", "Applicant", FormMethod.Post, new { @Id = "Form2" }))
+{
+    <div class="row" style="float:left;margin:10px">
+        <div class="col-md-12">
+            <button class="btn btn-primary" id="Step2PrevBtn" type="button">Previous</button>&nbsp;
+
+            <button class="btn btn-primary" id="Step2NextBtn" type="button">Next</button>
+        </div>
+    </div>
+
+    <div class="row" style="border:1px solid #e9dfdf;margin:0;box-sizing: border-box;padding:10px">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <span>7. Personal Details</span>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span>Gender<span class="text-danger">*</span></span>
+                        </div>
+                        <div class="col-md-4">
+                            <span>Mother Tounge<span class="text-danger">*</span></span>
+                        </div>
+                        <div class="col-md-4">
+                            <span>Nationality<span class="text-danger">*</span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(
+         x => x.GenderId,
+         new SelectList(Model.Genders, "Id", "Name"),
+         "SELECT", new { @class = "form-control" }
+     )
+                            @Html.ValidationMessageFor(x => x.GenderId)
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(
+        x => x.MotherToungueId,
+        new SelectList(Model.MotherTounges, "Id", "Name"),
+        "SELECT", new { @class = "form-control" }
+    )
+                            @Html.ValidationMessageFor(x => x.MotherToungueId)
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(
+        x => x.Nationalityid,
+        new SelectList(Model.Nationalities, "Id", "Name"),
+        "SELECT", new { @class = "form-control" }
+    )
+                            @Html.ValidationMessageFor(x => x.Nationalityid)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span>Religion</span>
+                        </div>
+                        <div class="col-md-4">
+                            <span>Blood Group<span class="text-danger">*</span></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(
+         x => x.ReligionId,
+         new SelectList(Model.Religions, "Id", "Name"),
+         "SELECT", new { @class = "form-control" }
+     )
+                            @Html.ValidationMessageFor(x => x.ReligionId)
+                        </div>
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(
+        x => x.BloodGroupId,
+        new SelectList(Model.BloodGroups, "Id", "Name"),
+        "SELECT", new { @class = "form-control" }
+    )
+                            @Html.ValidationMessageFor(x => x.BloodGroupId)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span>8. Address for Correspondence</span>
+                </div>
+                <div class="col-md-12" style="border:1px solid #e9dfdf;margin:0;box-sizing: border-box;padding:10px">
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-3">
+                                a.<span>State</span>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(
+   x => x.StateId,
+   new SelectList(Model.States, "Id", "Name"),
+   "SELECT", new { @class = "form-control" }
+)
+                                @Html.ValidationMessageFor(x => x.StateId)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-3">
+                                b.<span>District</span>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(
+    x => x.AddressDistrictId,
+    new SelectList(Model.step2Districts, "Id", "Name"),
+    "SELECT", new { @class = "form-control" }
+)
+                                @Html.ValidationMessageFor(x => x.AddressDistrictId)
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                c.<span>Block/Municipality</span>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(x => x.BlockId
+    ,
+    new SelectList(Model.Blocks, "Id", "Name"),
+    "SELECT", new { @class = "form-control" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr />
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <span>d.HouseNo. Street/Village, Post Office. Police Station Name<span class="text-danger">*</span></span>
+                            </div>
+                            <div class="col-md-5">
+                                @*<textarea row="5" cols="20" class="form-control"></textarea>*@
+                                @Html.TextAreaFor(model => model.HouseNo, 5, 20, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.HouseNo)
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-4" style="margin-top:10px">
+                        <div class="row">
+                            <div class="col-md-4">
+                                e.<span>PIN Code<span class="text-danger">*</span></span>
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(m => m.PinCode, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.PinCode)
+                                @*<input type="text" class="form-control" id="PinCode" />*@
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr />
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                f.<span>Mobile No<span class="text-danger">*</span></span>
+                            </div>
+                            <div class="col-md-6">
+                                @*<input type="text" class="form-control" id="MobileNo" />*@
+                                @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.MobileNo)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-4">
+                                g.<span>Email<span class="text-danger">*</span></span>
+                            </div>
+                            <div class="col-md-8">
+                                @*<input type="text" class="form-control" id="Email" />*@
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.Email)
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                h.<span>Telephone No.(Optional)</span>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" name="STD" id="STD" />
+                                        <span>STD Code</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" id="PhoneNo" />
+                                        <span>Phone No.</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    9.<span>Reservation Details</span>
+                </div>
+                <div class="col-md-12">
+
+
+
+
+                    <div class="col-md-2">
+                        <input type="radio" name="Cast" value="1" checked />
+                        <span>General</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="radio" name="Cast" value="2" />
+                        <span>Schedule Cast(SC)</span>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="Cast" value="3" />
+                        <span>Schedule Tribe(ST)</span>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="radio" name="Cast"  value="4" />
+                        <span>Backward Class(BC)</span>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="radio" name="Cast"  value="5"  />
+                        <span>Externally Backward Class(EBC)</span>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <hr />
+
+
+                    <div class="col-md-6">
+                        <span>Specially Abled</span>
+                        No<input type="radio" name="IsSpeciallyAbled" value="No" />
+                        Yes<input type="radio" name="IsSpeciallyAbled" value="Yes" />
+                    </div>
+                    <div class="col-md-6">
+                        <span>EWS(EConomically Wealker Section):</span>
+                        No<input type="radio" name="EWS" value="1" />
+                        Yes<input type="radio" name="EWS" value="2" />
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

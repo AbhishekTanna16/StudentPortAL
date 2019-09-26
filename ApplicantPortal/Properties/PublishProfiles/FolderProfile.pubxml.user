@@ -19,13 +19,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/ApplicantPortal.dll">
-      <publishTime>09/23/2019 01:02:29</publishTime>
+      <publishTime>09/26/2019 08:50:49</publishTime>
     </File>
     <File Include="bin/ApplicantPortal.pdb">
-      <publishTime>09/23/2019 01:02:29</publishTime>
+      <publishTime>09/26/2019 08:50:49</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>09/15/2019 12:44:12</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/29/2018 14:51:46</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/29/2018 14:51:46</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>06/27/2017 12:59:34</publishTime>
@@ -261,6 +267,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/Site.css">
       <publishTime>09/15/2019 12:42:53</publishTime>
     </File>
+    <File Include="Data/StudentPortal.edmx.diagram">
+      <publishTime>09/26/2019 08:34:13</publishTime>
+    </File>
     <File Include="favicon.ico">
       <publishTime>09/15/2019 12:42:53</publishTime>
     </File>
@@ -322,7 +331,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2019 12:43:51</publishTime>
     </File>
     <File Include="Views/Applicant/Index.cshtml">
-      <publishTime>09/22/2019 23:12:45</publishTime>
+      <publishTime>09/26/2019 08:50:12</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>09/15/2019 12:42:53</publishTime>
@@ -340,7 +349,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/16/2019 13:39:10</publishTime>
     </File>
     <File Include="Views/Shared/_StudentStep1.cshtml">
-      <publishTime>09/22/2019 20:11:26</publishTime>
+      <publishTime>09/26/2019 07:39:03</publishTime>
+    </File>
+    <File Include="Views/Shared/_StudentStep2.cshtml">
+      <publishTime>09/26/2019 08:22:50</publishTime>
+    </File>
+    <File Include="Views/Shared/_StudentStep3.cshtml">
+      <publishTime>09/26/2019 06:21:40</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/15/2019 12:42:53</publishTime>
@@ -349,7 +364,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2019 12:42:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/22/2019 23:15:27</publishTime>
+      <publishTime>09/26/2019 08:50:50</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b7056f96c9ff499991cc6860a5e65513" Name="Diagram1">
+        <EntityTypeShape EntityType="StudAppDBModel.AppCollegeMaster" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.ApplicationMaster" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.BlockMaster" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.BloodGroupMaster" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.BoardMaster" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.CollegeMaster" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.DistrictMaster" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.GenderMaster" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.MotherToungeMaster" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.NationalityMaster" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.ReligionMaster" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.StateMaster" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.StreamMaster" Width="1.5" PointX="6.75" PointY="9.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.YearMaster" Width="1.5" PointX="8.75" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

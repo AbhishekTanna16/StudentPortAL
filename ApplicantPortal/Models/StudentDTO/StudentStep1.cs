@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using static ApplicantPortal.Models.Helper;
 
 namespace ApplicantPortal.Models.StudentDTO
 {
     public class StudentStep1
     {
-        
+        [Required(ErrorMessage = "Please choose Examination Board")]
         public int BoardId { get; set; }
 
         [Required(ErrorMessage ="Please choose Pass Out Year")]
@@ -52,42 +53,43 @@ namespace ApplicantPortal.Models.StudentDTO
         public string Signature { get; set; }
 
         [Required(ErrorMessage = "Please Upload Your Photo.")]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
+        //[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
+        [AllowExtensions(Extensions = "png,jpg,jpeg", ErrorMessage = "Please select only Supported Files .png | .jpg")]
         public HttpPostedFileBase PostedPhoto { get; set; }
 
         [Required(ErrorMessage = "Please Upload Your Signature.")]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$", ErrorMessage = "Only Image files allowed.")]
+        [AllowExtensions(Extensions = "png,jpg,jpeg", ErrorMessage = "Please select only Supported Files .png | .jpg")]
         public HttpPostedFileBase PostedSignature { get; set; }
 
 
-        public IEnumerable<BoardMastrer> Boards { get; set; }
+        public IEnumerable<ABoardMastrer> Boards { get; set; }
 
-        public IEnumerable<DistrictMaster> Districts { get; set; }
+        public IEnumerable<ADistrictMaster> Districts { get; set; }
 
-        public IEnumerable<YearMaster> Years { get; set; }
+        public IEnumerable<AYearMaster> Years { get; set; }
 
-        public IEnumerable<CollegeMaster> Colleges { get; set; }
+        public IEnumerable<ACollegeMaster> Colleges { get; set; }
     }
-    public class BoardMastrer
+    public class ABoardMastrer
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
     }
-    public class DistrictMaster
+    public class ADistrictMaster
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
     }
 
-    public class YearMaster
+    public class AYearMaster
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
     }
-    public class CollegeMaster
+    public class ACollegeMaster
     {
         public int Id { get; set; }
         public string Name { get; set; }

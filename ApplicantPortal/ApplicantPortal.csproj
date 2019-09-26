@@ -46,10 +46,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -150,6 +158,63 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ApplicantController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\AppCollegeMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ApplicationMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BlockMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BloodGroupMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BoardMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CollegeMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DistrictMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GenderMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MotherToungeMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\NationalityMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ReligionMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\StateMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\StreamMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\StudentPortal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentPortal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\StudentPortal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\StudentPortal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentPortal.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\YearMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -160,6 +225,7 @@
     <Compile Include="Models\dalc.cs" />
     <Compile Include="Models\DDLBinding.cs" />
     <Compile Include="Models\EncryptDecrypt.cs" />
+    <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\StudentDTO\StudentStep1.cs" />
     <Compile Include="Models\StudentDTO\StudentStep2.cs" />
     <Compile Include="Models\StudentDTO\StudentStep3.cs" />
@@ -172,6 +238,16 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\newlogo.png" />
+    <Content Include="Data\StudentPortal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StudentPortal.Context.cs</LastGenOutput>
+      <DependentUpon>StudentPortal.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\StudentPortal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StudentPortal.edmx</DependentUpon>
+      <LastGenOutput>StudentPortal.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -180,6 +256,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Data\StudentPortal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StudentPortal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\StudentPortal.edmx.diagram">
+      <DependentUpon>StudentPortal.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -211,6 +294,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Applicant\Index.cshtml" />
     <Content Include="Views\Shared\_StudentStep1.cshtml" />
+    <Content Include="Views\Shared\_StudentStep2.cshtml" />
+    <Content Include="Views\Shared\_StudentStep3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -227,6 +312,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -29,6 +29,22 @@ namespace ApplicantPortal.Models
                     this.PopupColumns = lstColumns;
                 }
             }
+            else if (type == "NationalityMaster")
+            {
+                this.TableName = "NationalityMaster";
+                this.DisplayColumnName = "Name";
+                this.Keyword = keyword;
+                this.ValueColumnName = "Id";
+                this.WhereCalue = "";
+                if (!IsPopup)
+                    this.Result = this.GetData();
+                else
+                {
+                    this.PopupTitle = "Select Category From List";
+                    lstColumns.Add(new ColumnInfo() { title = "Category Name", field = "CategoryName", show = true, sortable = "CategoryName", filter = new Dictionary<string, string>() { { "CategoryName", "text" } } });
+                    this.PopupColumns = lstColumns;
+                }
+            }
             else if (type == "DistrictMaster")
             {
                 this.TableName = "DistrictMaster";
@@ -45,13 +61,45 @@ namespace ApplicantPortal.Models
                     this.PopupColumns = lstColumns;
                 }
             }
+            else if (type == "CollegeMaster")
+            {
+                this.TableName = "CollegeMaster";
+                this.DisplayColumnName = "CollegeName";
+                this.Keyword = keyword;
+                this.ValueColumnName = "CollegeId";
+                this.WhereCalue = " ISNULL(IsActive,1)=1 " + whereclause;
+                if (!IsPopup)
+                    this.Result = this.GetData();
+                else
+                {
+                    this.PopupTitle = "Select Category From List";
+                    lstColumns.Add(new ColumnInfo() { title = "Category Name", field = "CategoryName", show = true, sortable = "CategoryName", filter = new Dictionary<string, string>() { { "CategoryName", "text" } } });
+                    this.PopupColumns = lstColumns;
+                }
+            }
             else if (type == "StreamMaster")
             {
                 this.TableName = "StreamMaster";
-                this.DisplayColumnName = "StreamId";
+                this.DisplayColumnName = "StreamName";
                 this.Keyword = keyword;
                 this.ValueColumnName = "StreamId";
                 this.WhereCalue = " ISNULL(IsActive,1)=1 ";
+                if (!IsPopup)
+                    this.Result = this.GetData();
+                else
+                {
+                    this.PopupTitle = "Select InterviweeCandidate From List";
+                    lstColumns.Add(new ColumnInfo() { title = "CandidateRef Number", field = "CandidateRefno", show = true, sortable = "CandidateRefno", filter = new Dictionary<string, string>() { { "CandidateRefno", "text" } } });
+                    this.PopupColumns = lstColumns;
+                }
+            }
+            else if (type == "MotherToungeMaster")
+            {
+                this.TableName = "MotherToungeMaster";
+                this.DisplayColumnName = "Name";
+                this.Keyword = keyword;
+                this.ValueColumnName = "Id";
+                this.WhereCalue = "";
                 if (!IsPopup)
                     this.Result = this.GetData();
                 else
@@ -77,7 +125,57 @@ namespace ApplicantPortal.Models
                     this.PopupColumns = lstColumns;
                 }
             }
-            
+            else if(type == "GenderMaster")
+            {
+                this.TableName = "GenderMaster";
+                this.DisplayColumnName = "Name";
+                this.Keyword = keyword;
+                this.ValueColumnName = "Id";
+                this.WhereCalue = "";
+                this.Result = this.GetData();
+
+            }
+            else if (type == "StateMaster")
+            {
+                this.TableName = "StateMaster";
+                this.DisplayColumnName = "StateName";
+                this.Keyword = keyword;
+                this.ValueColumnName = "StateId";
+                this.WhereCalue = "";
+                this.Result = this.GetData();
+
+            }
+            else if (type == "ReligionMaster")
+            {
+                this.TableName = "ReligionMaster";
+                this.DisplayColumnName = "Name";
+                this.Keyword = keyword;
+                this.ValueColumnName = "Id";
+                this.WhereCalue = "";
+                this.Result = this.GetData();
+
+            }
+            else if (type == "BloodGroupMaster")
+            {
+                this.TableName = "BloodGroupMaster";
+                this.DisplayColumnName = "Name";
+                this.Keyword = keyword;
+                this.ValueColumnName = "Id";
+                this.WhereCalue = "";
+                this.Result = this.GetData();
+
+            }
+            else if (type == "BlockMaster")
+            {
+                this.TableName = "BlockMaster";
+                this.DisplayColumnName = "Name";
+                this.Keyword = keyword;
+                this.ValueColumnName = "Id";
+                this.WhereCalue = "";
+                this.Result = this.GetData();
+
+            }
+
 
         }
 

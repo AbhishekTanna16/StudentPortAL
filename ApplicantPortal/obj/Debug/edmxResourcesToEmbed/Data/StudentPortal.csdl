@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudAppDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="StudAppDBEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="GetAutoCompleteData">
+      <Parameter Name="Keyword" Mode="In" Type="String" />
+      <Parameter Name="Count" Mode="In" Type="Int32" />
+      <Parameter Name="TableName" Mode="In" Type="String" />
+      <Parameter Name="DisplayColumnName" Mode="In" Type="String" />
+      <Parameter Name="ValueColumnName" Mode="In" Type="String" />
+      <Parameter Name="WhereClause" Mode="In" Type="String" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="AppCollegeMasters" EntityType="StudAppDBModel.AppCollegeMaster" />
+    <EntitySet Name="ApplicationMasters" EntityType="StudAppDBModel.ApplicationMaster" />
+    <EntitySet Name="BlockMasters" EntityType="StudAppDBModel.BlockMaster" />
+    <EntitySet Name="BloodGroupMasters" EntityType="StudAppDBModel.BloodGroupMaster" />
+    <EntitySet Name="BoardMasters" EntityType="StudAppDBModel.BoardMaster" />
+    <EntitySet Name="CollegeMasters" EntityType="StudAppDBModel.CollegeMaster" />
+    <EntitySet Name="DistrictMasters" EntityType="StudAppDBModel.DistrictMaster" />
+    <EntitySet Name="GenderMasters" EntityType="StudAppDBModel.GenderMaster" />
+    <EntitySet Name="MotherToungeMasters" EntityType="StudAppDBModel.MotherToungeMaster" />
+    <EntitySet Name="NationalityMasters" EntityType="StudAppDBModel.NationalityMaster" />
+    <EntitySet Name="ReligionMasters" EntityType="StudAppDBModel.ReligionMaster" />
+    <EntitySet Name="StateMasters" EntityType="StudAppDBModel.StateMaster" />
+    <EntitySet Name="StreamMasters" EntityType="StudAppDBModel.StreamMaster" />
+    <EntitySet Name="YearMasters" EntityType="StudAppDBModel.YearMaster" />
+  </EntityContainer>
+  <EntityType Name="AppCollegeMaster">
+    <Key>
+      <PropertyRef Name="AppCollegeId" />
+    </Key>
+    <Property Name="AppCollegeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApllicationId" Type="Int32" Nullable="false" />
+    <Property Name="DistrictId" Type="Int32" Nullable="false" />
+    <Property Name="CollegeId" Type="Int32" Nullable="false" />
+    <Property Name="StremId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationMaster">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Precision="3" />
+    <Property Name="BoardId" Type="Int32" Nullable="false" />
+    <Property Name="PassingYearId" Type="Int32" Nullable="false" />
+    <Property Name="ExamType" Type="Int32" Nullable="false" />
+    <Property Name="BOD" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="RollCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RollNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicantName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FatherName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MotherName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="S10MaxiMarks" Type="Int32" Nullable="false" />
+    <Property Name="S10TotalMarks" Type="Int32" Nullable="false" />
+    <Property Name="Is10Compartmentally" Type="Boolean" Nullable="false" />
+    <Property Name="SchoolName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SchoolAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DistrictId" Type="Int32" />
+    <Property Name="YearOfJoin" Type="Int32" />
+    <Property Name="YearOfLeaving" Type="Int32" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MotherTongue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HouseAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ReservationId" Type="Int32" />
+    <Property Name="EWS" Type="Int32" />
+    <Property Name="SpecialAbied" Type="Int32" />
+    <Property Name="IsCondition1" Type="Boolean" />
+    <Property Name="IsCondition2" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BlockMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BloodGroupMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BoardMaster">
+    <Key>
+      <PropertyRef Name="BoardId" />
+    </Key>
+    <Property Name="BoardId" Type="Int32" Nullable="false" />
+    <Property Name="BoardName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CollegeMaster">
+    <Key>
+      <PropertyRef Name="CollegeId" />
+    </Key>
+    <Property Name="CollegeId" Type="Int32" Nullable="false" />
+    <Property Name="CollegeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DistrictMaster">
+    <Key>
+      <PropertyRef Name="DistrictId" />
+    </Key>
+    <Property Name="DistrictId" Type="Int32" Nullable="false" />
+    <Property Name="DistrictName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GenderMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MotherToungeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NationalityMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ReligionMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="StateMaster">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="StreamMaster">
+    <Key>
+      <PropertyRef Name="StreamId" />
+    </Key>
+    <Property Name="StreamId" Type="Int32" Nullable="false" />
+    <Property Name="StreamName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="YearMaster">
+    <Key>
+      <PropertyRef Name="YearId" />
+    </Key>
+    <Property Name="YearId" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

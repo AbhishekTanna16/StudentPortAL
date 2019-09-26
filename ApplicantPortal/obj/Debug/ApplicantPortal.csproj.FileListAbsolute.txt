@@ -184,3 +184,7 @@ F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\obj\Debug\ApplicantPor
 F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\obj\Debug\ApplicantPortal.csproj.CopyComplete
 F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\obj\Debug\ApplicantPortal.dll
 F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\obj\Debug\ApplicantPortal.pdb
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.dll
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.SqlServer.dll
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.xml
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.SqlServer.xml

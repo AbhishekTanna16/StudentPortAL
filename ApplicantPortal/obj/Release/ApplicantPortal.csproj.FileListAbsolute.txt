@@ -91,3 +91,7 @@ F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\obj\Release\ApplicantP
 F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\obj\Release\ApplicantPortal.csproj.CopyComplete
 F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\obj\Release\ApplicantPortal.dll
 F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\obj\Release\ApplicantPortal.pdb
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.dll
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.SqlServer.dll
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.xml
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.SqlServer.xml
