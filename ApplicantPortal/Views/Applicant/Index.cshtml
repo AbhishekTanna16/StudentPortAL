@@ -621,8 +621,21 @@
                         data: form.serialize(),
                         success: function (response) {
                             if (response) {
-                                alert("Successfully Submitted")
-                                window.location.reload();
+                                debugger
+                                $.ajax({
+                                    type: "GET",
+                                    url: '/Applicant/Download?path='+response.path,
+                                    
+                                    success: function (res) {
+                                        if (response) {
+                                            
+                                            window.location.href = '/Applicant/Download?path='+response.path;
+                                        }
+                                    },
+                                    error: function (data) {
+                                        console.log(data)
+                                    }
+                                });
                             }
                         }
                     });

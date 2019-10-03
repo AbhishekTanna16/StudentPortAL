@@ -188,3 +188,5 @@ F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.dl
 F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.SqlServer.dll
 F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.xml
 F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\EntityFramework.SqlServer.xml
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\NReco.PdfGenerator.dll
+F:\HavlogicAnkitBhaiProject\StudentPortAL\ApplicantPortal\bin\NReco.PdfGenerator.xml
