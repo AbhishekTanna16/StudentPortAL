@@ -276,7 +276,7 @@ namespace ApplicantPortal.Controllers
                         {
                             html = html.Replace("@@PYear" + i, sYear[i]);
                         }
-                        byte[] bytes = Encoding.Default.GetBytes(html);
+                        byte[] bytes = Encoding.Default.GetBytes(html);//
                         TempData["html"] = html;
                         TempData.Keep();
                         // System.IO.File.Create(HttpContext.Server.MapPath("~/applicant/data.pdf"));
