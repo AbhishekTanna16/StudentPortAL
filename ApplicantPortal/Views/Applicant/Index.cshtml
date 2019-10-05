@@ -556,10 +556,10 @@
             $(document).ready(function () {
                 $("#signimg").css("display", "none")
                 $("#photoimg").css("display", "none")
-                /*disable non active tabs*/
-                $('.nav li').not('.active').addClass('disabled');
+                ///*disable non active tabs*/
+                //$('.nav li').not('.active').addClass('disabled');
 
-                $('.nav li').not('.active').find('a').removeAttr("data-toggle");
+                //$('.nav li').not('.active').find('a').removeAttr("data-toggle");
 
                 //$('button').click(function(){
                 //    /*enable next tab*/
@@ -614,11 +614,14 @@
             })  
             $('#Step3Btn').click(function (event) {
                 var form = $('#Form3');
-                if (form.valid() && $('input[name=MoreOptions]:checked').val()==='NO') {
+                var array = $.map($('input[name="subject"]:checked'), function (c) { return c.id; })
+                if (form.valid()) {
                     $.ajax({
                         type: "POST",
-                        url: form.attr('action'),
+                        url: form.attr('action') + "?subjects=" + array.join('|'),
+                        
                         data: form.serialize(),
+                       
                         success: function (response) {
                             if (response) {
                                 debugger

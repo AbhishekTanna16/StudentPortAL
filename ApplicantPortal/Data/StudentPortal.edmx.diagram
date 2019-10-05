@@ -19,6 +19,11 @@
         <EntityTypeShape EntityType="StudAppDBModel.StateMaster" Width="1.5" PointX="4.75" PointY="9.75" />
         <EntityTypeShape EntityType="StudAppDBModel.StreamMaster" Width="1.5" PointX="6.75" PointY="9.75" />
         <EntityTypeShape EntityType="StudAppDBModel.YearMaster" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.ApplicantSubject" Width="1.5" PointX="11" PointY="4.375" />
+        <EntityTypeShape EntityType="StudAppDBModel.SectionMaster" Width="1.5" PointX="8.75" PointY="12.75" />
+        <EntityTypeShape EntityType="StudAppDBModel.SubjectMaster" Width="1.5" PointX="11.375" PointY="0.75" />
+        <AssociationConnector Association="StudAppDBModel.FK_ApplicantSubject_ApplicationMaster" />
+        <AssociationConnector Association="StudAppDBModel.FK_ApplicantSubject_SectionMaster" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

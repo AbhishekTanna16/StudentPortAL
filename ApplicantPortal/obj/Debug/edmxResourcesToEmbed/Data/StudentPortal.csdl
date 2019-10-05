@@ -24,6 +24,17 @@
     <EntitySet Name="StateMasters" EntityType="StudAppDBModel.StateMaster" />
     <EntitySet Name="StreamMasters" EntityType="StudAppDBModel.StreamMaster" />
     <EntitySet Name="YearMasters" EntityType="StudAppDBModel.YearMaster" />
+    <EntitySet Name="ApplicantSubjects" EntityType="StudAppDBModel.ApplicantSubject" />
+    <EntitySet Name="SectionMasters" EntityType="StudAppDBModel.SectionMaster" />
+    <EntitySet Name="SubjectMasters" EntityType="StudAppDBModel.SubjectMaster" />
+    <AssociationSet Name="FK_ApplicantSubject_ApplicationMaster" Association="StudAppDBModel.FK_ApplicantSubject_ApplicationMaster">
+      <End Role="ApplicationMaster" EntitySet="ApplicationMasters" />
+      <End Role="ApplicantSubject" EntitySet="ApplicantSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplicantSubject_SectionMaster" Association="StudAppDBModel.FK_ApplicantSubject_SectionMaster">
+      <End Role="SectionMaster" EntitySet="SectionMasters" />
+      <End Role="ApplicantSubject" EntitySet="ApplicantSubjects" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="AppCollegeMaster">
     <Key>
@@ -81,6 +92,8 @@
     <Property Name="UpdateDate" Type="DateTime" Precision="3" />
     <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StudentSubjects" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ApplicantSubjects" Relationship="StudAppDBModel.FK_ApplicantSubject_ApplicationMaster" FromRole="ApplicationMaster" ToRole="ApplicantSubject" />
   </EntityType>
   <EntityType Name="BlockMaster">
     <Key>
@@ -170,4 +183,55 @@
     <Property Name="YearId" Type="Int32" Nullable="false" />
     <Property Name="Year" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityType Name="ApplicantSubject">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SectionId" Type="Int32" />
+    <Property Name="ApplicationId" Type="Int32" />
+    <NavigationProperty Name="ApplicationMaster" Relationship="StudAppDBModel.FK_ApplicantSubject_ApplicationMaster" FromRole="ApplicantSubject" ToRole="ApplicationMaster" />
+    <NavigationProperty Name="SectionMaster" Relationship="StudAppDBModel.FK_ApplicantSubject_SectionMaster" FromRole="ApplicantSubject" ToRole="SectionMaster" />
+  </EntityType>
+  <EntityType Name="SectionMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ApplicantSubjects" Relationship="StudAppDBModel.FK_ApplicantSubject_SectionMaster" FromRole="SectionMaster" ToRole="ApplicantSubject" />
+  </EntityType>
+  <EntityType Name="SubjectMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_ApplicantSubject_ApplicationMaster">
+    <End Type="StudAppDBModel.ApplicationMaster" Role="ApplicationMaster" Multiplicity="0..1" />
+    <End Type="StudAppDBModel.ApplicantSubject" Role="ApplicantSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationMaster">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="ApplicantSubject">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplicantSubject_SectionMaster">
+    <End Type="StudAppDBModel.SectionMaster" Role="SectionMaster" Multiplicity="0..1" />
+    <End Type="StudAppDBModel.ApplicantSubject" Role="ApplicantSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SectionMaster">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplicantSubject">
+        <PropertyRef Name="SectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

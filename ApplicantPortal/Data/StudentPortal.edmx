@@ -15,6 +15,15 @@
           <Property Name="CollegeId" Type="int" Nullable="false" />
           <Property Name="StremId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ApplicantSubject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+          <Property Name="SectionId" Type="int" />
+          <Property Name="ApplicationId" Type="int" />
+        </EntityType>
         <EntityType Name="ApplicationMaster">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -61,6 +70,7 @@
           <Property Name="UpdateDate" Type="datetime" />
           <Property Name="Photo" Type="nvarchar(max)" />
           <Property Name="Signature" Type="nvarchar(max)" />
+          <Property Name="StudentSubjects" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="BlockMaster">
           <Key>
@@ -128,6 +138,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="SectionMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="StateMaster">
           <Key>
             <PropertyRef Name="StateId" />
@@ -143,6 +160,14 @@
           <Property Name="StreamName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="SubjectMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="100" />
+          <Property Name="Code" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="YearMaster">
           <Key>
             <PropertyRef Name="YearId" />
@@ -150,6 +175,30 @@
           <Property Name="YearId" Type="int" Nullable="false" />
           <Property Name="Year" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_ApplicantSubject_ApplicationMaster">
+          <End Role="ApplicationMaster" Type="Self.ApplicationMaster" Multiplicity="0..1" />
+          <End Role="ApplicantSubject" Type="Self.ApplicantSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationMaster">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="ApplicantSubject">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicantSubject_SectionMaster">
+          <End Role="SectionMaster" Type="Self.SectionMaster" Multiplicity="0..1" />
+          <End Role="ApplicantSubject" Type="Self.ApplicantSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SectionMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicantSubject">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="GetAutoCompleteData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Keyword" Type="nvarchar" Mode="In" />
           <Parameter Name="Count" Type="int" Mode="In" />
@@ -161,6 +210,7 @@
         </Function>
         <EntityContainer Name="StudAppDBModelStoreContainer">
           <EntitySet Name="AppCollegeMaster" EntityType="Self.AppCollegeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicantSubject" EntityType="Self.ApplicantSubject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicationMaster" EntityType="Self.ApplicationMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BlockMaster" EntityType="Self.BlockMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BloodGroupMaster" EntityType="Self.BloodGroupMaster" Schema="dbo" store:Type="Tables" />
@@ -171,9 +221,19 @@
           <EntitySet Name="MotherToungeMaster" EntityType="Self.MotherToungeMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NationalityMaster" EntityType="Self.NationalityMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReligionMaster" EntityType="Self.ReligionMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SectionMaster" EntityType="Self.SectionMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StreamMaster" EntityType="Self.StreamMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectMaster" EntityType="Self.SubjectMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="YearMaster" EntityType="Self.YearMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ApplicantSubject_ApplicationMaster" Association="Self.FK_ApplicantSubject_ApplicationMaster">
+            <End Role="ApplicationMaster" EntitySet="ApplicationMaster" />
+            <End Role="ApplicantSubject" EntitySet="ApplicantSubject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicantSubject_SectionMaster" Association="Self.FK_ApplicantSubject_SectionMaster">
+            <End Role="SectionMaster" EntitySet="SectionMaster" />
+            <End Role="ApplicantSubject" EntitySet="ApplicantSubject" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -203,6 +263,17 @@
           <EntitySet Name="StateMasters" EntityType="StudAppDBModel.StateMaster" />
           <EntitySet Name="StreamMasters" EntityType="StudAppDBModel.StreamMaster" />
           <EntitySet Name="YearMasters" EntityType="StudAppDBModel.YearMaster" />
+          <EntitySet Name="ApplicantSubjects" EntityType="StudAppDBModel.ApplicantSubject" />
+          <EntitySet Name="SectionMasters" EntityType="StudAppDBModel.SectionMaster" />
+          <EntitySet Name="SubjectMasters" EntityType="StudAppDBModel.SubjectMaster" />
+          <AssociationSet Name="FK_ApplicantSubject_ApplicationMaster" Association="StudAppDBModel.FK_ApplicantSubject_ApplicationMaster">
+            <End Role="ApplicationMaster" EntitySet="ApplicationMasters" />
+            <End Role="ApplicantSubject" EntitySet="ApplicantSubjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicantSubject_SectionMaster" Association="StudAppDBModel.FK_ApplicantSubject_SectionMaster">
+            <End Role="SectionMaster" EntitySet="SectionMasters" />
+            <End Role="ApplicantSubject" EntitySet="ApplicantSubjects" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="AppCollegeMaster">
           <Key>
@@ -260,6 +331,8 @@
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StudentSubjects" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplicantSubjects" Relationship="StudAppDBModel.FK_ApplicantSubject_ApplicationMaster" FromRole="ApplicationMaster" ToRole="ApplicantSubject" />
         </EntityType>
         <EntityType Name="BlockMaster">
           <Key>
@@ -349,6 +422,57 @@
           <Property Name="YearId" Type="Int32" Nullable="false" />
           <Property Name="Year" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="ApplicantSubject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SectionId" Type="Int32" />
+          <Property Name="ApplicationId" Type="Int32" />
+          <NavigationProperty Name="ApplicationMaster" Relationship="StudAppDBModel.FK_ApplicantSubject_ApplicationMaster" FromRole="ApplicantSubject" ToRole="ApplicationMaster" />
+          <NavigationProperty Name="SectionMaster" Relationship="StudAppDBModel.FK_ApplicantSubject_SectionMaster" FromRole="ApplicantSubject" ToRole="SectionMaster" />
+        </EntityType>
+        <EntityType Name="SectionMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ApplicantSubjects" Relationship="StudAppDBModel.FK_ApplicantSubject_SectionMaster" FromRole="SectionMaster" ToRole="ApplicantSubject" />
+        </EntityType>
+        <EntityType Name="SubjectMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_ApplicantSubject_ApplicationMaster">
+          <End Type="StudAppDBModel.ApplicationMaster" Role="ApplicationMaster" Multiplicity="0..1" />
+          <End Type="StudAppDBModel.ApplicantSubject" Role="ApplicantSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationMaster">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="ApplicantSubject">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicantSubject_SectionMaster">
+          <End Type="StudAppDBModel.SectionMaster" Role="SectionMaster" Multiplicity="0..1" />
+          <End Type="StudAppDBModel.ApplicantSubject" Role="ApplicantSubject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SectionMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicantSubject">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -370,6 +494,7 @@
           <EntitySetMapping Name="ApplicationMasters">
             <EntityTypeMapping TypeName="StudAppDBModel.ApplicationMaster">
               <MappingFragment StoreEntitySet="ApplicationMaster">
+                <ScalarProperty Name="StudentSubjects" ColumnName="StudentSubjects" />
                 <ScalarProperty Name="Signature" ColumnName="Signature" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
@@ -512,6 +637,33 @@
               <MappingFragment StoreEntitySet="YearMaster">
                 <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="YearId" ColumnName="YearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantSubjects">
+            <EntityTypeMapping TypeName="StudAppDBModel.ApplicantSubject">
+              <MappingFragment StoreEntitySet="ApplicantSubject">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SectionMasters">
+            <EntityTypeMapping TypeName="StudAppDBModel.SectionMaster">
+              <MappingFragment StoreEntitySet="SectionMaster">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectMasters">
+            <EntityTypeMapping TypeName="StudAppDBModel.SubjectMaster">
+              <MappingFragment StoreEntitySet="SubjectMaster">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

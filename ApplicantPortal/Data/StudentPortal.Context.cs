@@ -41,6 +41,9 @@ namespace ApplicantPortal.Data
         public virtual DbSet<StateMaster> StateMasters { get; set; }
         public virtual DbSet<StreamMaster> StreamMasters { get; set; }
         public virtual DbSet<YearMaster> YearMasters { get; set; }
+        public virtual DbSet<ApplicantSubject> ApplicantSubjects { get; set; }
+        public virtual DbSet<SectionMaster> SectionMasters { get; set; }
+        public virtual DbSet<SubjectMaster> SubjectMasters { get; set; }
     
         public virtual int GetAutoCompleteData(string keyword, Nullable<int> count, string tableName, string displayColumnName, string valueColumnName, string whereClause, string type)
         {

@@ -156,7 +156,7 @@ namespace ApplicantPortal.Controllers
         }
 
         [HttpPost]
-        public ActionResult StudentStep3(StudentStep3 data)
+        public ActionResult StudentStep3(StudentStep3 data,string subjects)
         {
             try
             {
@@ -214,6 +214,7 @@ namespace ApplicantPortal.Controllers
                     }
                    
                     app.IsActive = true;
+                    app.StudentSubjects = subjects;
                     db.ApplicationMasters.Add(app);
                     int id=db.SaveChanges();
                     if(id > 0)

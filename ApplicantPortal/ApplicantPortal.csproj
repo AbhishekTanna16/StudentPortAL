@@ -164,6 +164,9 @@
     <Compile Include="Data\AppCollegeMaster.cs">
       <DependentUpon>StudentPortal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\ApplicantSubject.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ApplicationMaster.cs">
       <DependentUpon>StudentPortal.tt</DependentUpon>
     </Compile>
@@ -194,6 +197,9 @@
     <Compile Include="Data\ReligionMaster.cs">
       <DependentUpon>StudentPortal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\SectionMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\StateMaster.cs">
       <DependentUpon>StudentPortal.tt</DependentUpon>
     </Compile>
@@ -214,6 +220,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentPortal.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SubjectMaster.cs">
+      <DependentUpon>StudentPortal.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\YearMaster.cs">
       <DependentUpon>StudentPortal.tt</DependentUpon>

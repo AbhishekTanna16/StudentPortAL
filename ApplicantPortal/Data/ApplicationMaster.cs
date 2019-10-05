@@ -14,6 +14,12 @@ namespace ApplicantPortal.Data
     
     public partial class ApplicationMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ApplicationMaster()
+        {
+            this.ApplicantSubjects = new HashSet<ApplicantSubject>();
+        }
+    
         public int ApplicationId { get; set; }
         public string ApplicationNumber { get; set; }
         public Nullable<System.DateTime> EntryDate { get; set; }
@@ -56,5 +62,9 @@ namespace ApplicantPortal.Data
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public string Photo { get; set; }
         public string Signature { get; set; }
+        public string StudentSubjects { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ApplicantSubject> ApplicantSubjects { get; set; }
     }
 }
