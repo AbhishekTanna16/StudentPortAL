@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [StudAppDB]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Database [StudAppDB]    Script Date: 10/5/2019 8:56:38 AM ******/
 CREATE DATABASE [StudAppDB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -75,7 +75,7 @@ ALTER DATABASE [StudAppDB] SET DELAYED_DURABILITY = DISABLED
 GO
 USE [StudAppDB]
 GO
-/****** Object:  Table [dbo].[AppCollegeMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[AppCollegeMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -93,7 +93,24 @@ CREATE TABLE [dbo].[AppCollegeMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ApplicationMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[ApplicantSubject]    Script Date: 10/5/2019 8:56:39 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ApplicantSubject](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Subject] [nvarchar](max) NULL,
+	[SectionId] [int] NULL,
+	[ApplicationId] [int] NULL,
+ CONSTRAINT [PK_ApplicantSubject] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[ApplicationMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,6 +158,7 @@ CREATE TABLE [dbo].[ApplicationMaster](
 	[UpdateDate] [datetime] NULL,
 	[Photo] [nvarchar](max) NULL,
 	[Signature] [nvarchar](max) NULL,
+	[StudentSubjects] [nvarchar](max) NULL,
  CONSTRAINT [PK_ApplicationMaster] PRIMARY KEY CLUSTERED 
 (
 	[ApplicationId] ASC
@@ -148,7 +166,7 @@ CREATE TABLE [dbo].[ApplicationMaster](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[BlockMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[BlockMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -163,7 +181,7 @@ CREATE TABLE [dbo].[BlockMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[BloodGroupMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[BloodGroupMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -178,7 +196,7 @@ CREATE TABLE [dbo].[BloodGroupMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[BoardMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[BoardMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -194,7 +212,7 @@ CREATE TABLE [dbo].[BoardMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[CollegeMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[CollegeMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -210,7 +228,7 @@ CREATE TABLE [dbo].[CollegeMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[DistrictMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[DistrictMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -226,7 +244,7 @@ CREATE TABLE [dbo].[DistrictMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[GenderMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[GenderMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -245,7 +263,7 @@ CREATE TABLE [dbo].[GenderMaster](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[MotherToungeMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[MotherToungeMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -260,7 +278,7 @@ CREATE TABLE [dbo].[MotherToungeMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[NationalityMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[NationalityMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -275,7 +293,7 @@ CREATE TABLE [dbo].[NationalityMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[ReligionMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[ReligionMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -290,7 +308,22 @@ CREATE TABLE [dbo].[ReligionMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[StateMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[SectionMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SectionMaster](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NULL,
+ CONSTRAINT [PK_SectionMaster] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[StateMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -305,7 +338,7 @@ CREATE TABLE [dbo].[StateMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[StreamMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[StreamMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -321,7 +354,23 @@ CREATE TABLE [dbo].[StreamMaster](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[YearMaster]    Script Date: 9/26/2019 8:53:08 AM ******/
+/****** Object:  Table [dbo].[SubjectMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SubjectMaster](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Subject] [nvarchar](100) NULL,
+	[Code] [nvarchar](100) NULL,
+ CONSTRAINT [PK_SubjectMaster] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[YearMaster]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -341,12 +390,170 @@ SET IDENTITY_INSERT [dbo].[AppCollegeMaster] ON
 GO
 INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (1, 1, 1, 1, 2)
 GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (2, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (3, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (4, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (5, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (6, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (7, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (8, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (9, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (10, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (11, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (12, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (13, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (14, 1, 1, 2, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (15, 1, 1, 2, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (16, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (17, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (18, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (19, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (20, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (21, 1, 2, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (22, 1, 2, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (23, 1, 2, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (24, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (25, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (26, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (27, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (28, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (29, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (30, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (31, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (32, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (33, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (34, 1, 2, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (35, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (36, 1, 1, 1, 1)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (37, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (38, 1, 1, 1, 2)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (39, 1, 1, 1, 3)
+GO
+INSERT [dbo].[AppCollegeMaster] ([AppCollegeId], [ApllicationId], [DistrictId], [CollegeId], [StremId]) VALUES (40, 1, 1, 1, 2)
+GO
 SET IDENTITY_INSERT [dbo].[AppCollegeMaster] OFF
 GO
 SET IDENTITY_INSERT [dbo].[ApplicationMaster] ON 
 
 GO
-INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature]) VALUES (1, N'0926362223', CAST(N'2019-09-26 08:36:22.233' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'df', N'df', N'sds', N'sd', N'aqssa', 0, 0, 0, N'we', N'fg', 1, 2008, 2008, N'1         ', N'1', N'1', N'2', N'1         ', N'1', N'1', N'1', N'fe', N'454545', N'4455665555', N'test@rr.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL)
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (1, N'0926362223', CAST(N'2019-09-26 08:36:22.233' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'df', N'df', N'sds', N'sd', N'aqssa', 0, 0, 0, N'we', N'fg', 1, 2008, 2008, N'1         ', N'1', N'1', N'2', N'1         ', N'1', N'1', N'1', N'fe', N'454545', N'4455665555', N'test@rr.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (2, N'0928071356', CAST(N'2019-09-28 00:07:13.567' AS DateTime), 1, 2008, 1, CAST(N'2019-09-11' AS Date), N'123456', N'123', N'Tanna Abhishek H', N'Hiteshkumar Tanna', N'Kitranben tanna', 0, 0, 0, N'D R Rana', N'Near Test,SurAAT', 1, 2010, 2010, N'2         ', N'2', N'1', N'2', N'4         ', N'1', N'1', N'1', N'TEST', N'315678', N'98456789023', N'rre@gmail.com', NULL, 1, 2, 1, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (3, N'1001391157', CAST(N'2019-10-01 05:39:11.577' AS DateTime), 1, 2008, 1, CAST(N'2019-10-03' AS Date), N'10000', N'5555', N'test', N'test', N'teest', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'3         ', N'1', N'1', N'1', N'test', N'667788', N'9988445566', N'tst@gmail.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (4, N'1001420769', CAST(N'2019-10-01 05:42:07.697' AS DateTime), 1, 2008, 1, CAST(N'2019-10-25' AS Date), N'997877', N'88889', N'test', N'test', N'teare', 0, 0, 0, N'test', N'teeyt', 1, 2008, 2008, N'2         ', N'1', N'1', N'2', N'1         ', N'1', N'1', N'1', N'testq', N'443322', N'9988744555', N't@r.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (5, N'1001464103', CAST(N'2019-10-01 05:46:41.033' AS DateTime), 1, 2008, 1, CAST(N'2019-12-31' AS Date), N'ererqr', N'dfgsgfq', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'334455', N'3344222232', N't@t.com', NULL, 1, 2, 1, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (6, N'1001584168', CAST(N'2019-10-01 05:58:41.703' AS DateTime), 1, 2008, 2, CAST(N'2019-10-03' AS Date), N'www', N'33333', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'sd', N'336699', N'4455667788', N't@f.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (7, N'1001080068', CAST(N'2019-10-01 06:08:00.687' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'ss', N'sd', N'e', N'w', N'w', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'd', N'669988', N'3344556677', N'ee@rr.com', NULL, 1, 2, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (8, N'1001082548', CAST(N'2019-10-01 06:08:25.483' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'ss', N'sd', N'e', N'w', N'w', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'd', N'669988', N'3344556677', N'ee@rr.com', NULL, 1, 2, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (9, N'1001115354', CAST(N'2019-10-01 06:11:53.563' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'ss', N'ss', N'ss', N'ss', N's', 0, 0, 0, N'testg', N'test', 1, 2008, 2013, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'dd', N'778899', N'4477885566', N'dd@rr.com', NULL, 1, 2, 1, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (10, N'1001122350', CAST(N'2019-10-01 06:12:23.503' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'ss', N'ss', N'ss', N'ss', N's', 0, 0, 0, N'testg', N'test', 1, 2008, 2013, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'dd', N'778899', N'4477885566', N'dd@rr.com', NULL, 1, 2, 1, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (11, N'1001194224', CAST(N'2019-10-01 06:19:42.243' AS DateTime), 2, 2010, 1, CAST(N'2019-10-01' AS Date), N'ee', N'ee', N'ff', N'f', N'f', 0, 0, 0, N'ww', N'ww', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'dd', N'778889', N'1122445566', N'dd@ee.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (12, N'1001200263', CAST(N'2019-10-01 06:20:02.640' AS DateTime), 2, 2010, 1, CAST(N'2019-10-01' AS Date), N'ee', N'ee', N'ff', N'f', N'f', 0, 0, 0, N'ww', N'ww', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'dd', N'778889', N'1122445566', N'dd@ee.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (13, N'1001203581', CAST(N'2019-10-01 06:20:35.817' AS DateTime), 2, 2010, 1, CAST(N'2019-10-01' AS Date), N'ee', N'ee', N'ff', N'f', N'f', 0, 0, 0, N'ww', N'ww', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'dd', N'778889', N'1122445566', N'dd@ee.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (14, N'1001213506', CAST(N'2019-10-01 06:21:35.070' AS DateTime), 2, 2010, 1, CAST(N'2019-10-01' AS Date), N'ee', N'ee', N'ff', N'f', N'f', 0, 0, 0, N'ww', N'ww', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'dd', N'778889', N'1122445566', N'dd@ee.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (15, N'1001233825', CAST(N'2019-10-01 06:23:38.257' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'mm', N'lmkm', N'mm', N'm', N'm', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'fff', N'445665', N'7788996655', N'f@r.com', NULL, 1, 2, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (16, N'1001255657', CAST(N'2019-10-01 06:25:56.577' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'kkkk', N'kkkk', N'kk', N'k', N'k', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'778899', N'7774445556', N'ff@tt.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (17, N'1001322223', CAST(N'2019-10-01 06:32:22.247' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'rr', N'rr', N'rr', N'r', N'r', 0, 0, 0, N'test', N'TEST', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'778899', N'7787999887', N't@t.com', NULL, 1, 2, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (18, N'1001364521', CAST(N'2019-10-01 06:36:45.220' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'nn', N'kk', N'jj', N'jj', N'j', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'dfd', N'778899', N'77889966564', N'h@r.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (19, N'1002175485', CAST(N'2019-10-02 04:17:54.857' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'11111', N'1112223334', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'2', N'1', N'1', N'test', N'222222', N'1122335566', N'test@g.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (20, N'1002183444', CAST(N'2019-10-02 04:18:34.447' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'11111', N'1112223334', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'2', N'1', N'1', N'test', N'222222', N'1122335566', N'test@g.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (21, N'1002224622', CAST(N'2019-10-02 04:22:46.223' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'11111', N'1112223334', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'2', N'1', N'1', N'test', N'222222', N'1122335566', N'test@g.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (22, N'1002345318', CAST(N'2019-10-02 04:34:53.183' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'11111', N'2223336665', N'test', N' test', N'tet', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'tes', N'445544', N'4444442223', N't@r.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (23, N'1002351574', CAST(N'2019-10-02 04:35:15.750' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'11111', N'2223336665', N'test', N' test', N'tet', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'tes', N'445544', N'4444442223', N't@r.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (24, N'1002373136', CAST(N'2019-10-02 04:37:31.363' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'11111', N'2223336665', N'test', N' test', N'tet', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'tes', N'445544', N'4444442223', N't@r.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (25, N'1002393911', CAST(N'2019-10-02 04:39:39.117' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'11223', N'5566444444', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'1         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'336699', N'1122335455', N't@r.com', NULL, 1, 2, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (26, N'1002420774', CAST(N'2019-10-02 04:42:07.740' AS DateTime), 1, 2010, 1, CAST(N'1922-12-05' AS Date), N'11223', N'5566447788', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'112234', N'4455445444', N't@4.com', NULL, 1, 2, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (27, N'1002193132', CAST(N'2019-10-02 05:19:31.330' AS DateTime), 1, 2008, 1, CAST(N'2019-10-16' AS Date), N'44556', N'1122334455', N'tesst', N'tt', N'ee', 0, 0, 0, N'33', N'ee', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'2', N'1', N'test', N'556677', N'777878787878', N't@e.xiom', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (28, N'1002231292', CAST(N'2019-10-02 05:23:12.930' AS DateTime), 1, 2008, 1, CAST(N'2019-10-16' AS Date), N'44556', N'1122334455', N'tesst', N'tt', N'ee', 0, 0, 0, N'33', N'ee', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'2', N'1', N'test', N'556677', N'777878787878', N't@e.xiom', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (29, N'1002363117', CAST(N'2019-10-02 05:36:31.173' AS DateTime), 1, 2008, 1, CAST(N'2019-10-16' AS Date), N'44556', N'1122334455', N'tesst', N'tt', N'ee', 0, 0, 0, N'33', N'ee', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'2', N'1', N'test', N'556677', N'777878787878', N't@e.xiom', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (30, N'1002062919', CAST(N'2019-10-02 07:06:29.197' AS DateTime), 2, 2008, 2, CAST(N'2019-12-31' AS Date), N'44556', N'1234567980', N'test', N'test', N'test', 0, 0, 0, N'testqte', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'445566', N'4433556677', N't@h.vom', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (31, N'1002100517', CAST(N'2019-10-02 07:10:05.177' AS DateTime), 2, 2008, 2, CAST(N'2019-12-31' AS Date), N'44556', N'1234567980', N'test', N'test', N'test', 0, 0, 0, N'testqte', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'445566', N'4433556677', N't@h.vom', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (32, N'1002110156', CAST(N'2019-10-02 07:11:01.567' AS DateTime), 2, 2008, 2, CAST(N'2019-12-31' AS Date), N'44556', N'1234567980', N'test', N'test', N'test', 0, 0, 0, N'testqte', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'445566', N'4433556677', N't@h.vom', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (33, N'1002133506', CAST(N'2019-10-02 07:13:35.060' AS DateTime), 2, 2008, 2, CAST(N'2019-12-31' AS Date), N'44556', N'1234567980', N'test', N'test', N'test', 0, 0, 0, N'testqte', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'445566', N'4433556677', N't@h.vom', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (34, N'1002201474', CAST(N'2019-10-02 07:20:14.747' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'44556', N'4455668899', N'tetst', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'445566', N'4455889966', N't@r.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (35, N'1002275188', CAST(N'2019-10-02 07:27:51.887' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'12345', N'3344556677', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'2         ', N'1', N'1', N'2', N'1         ', N'1', N'1', N'1', N'434343434`', N'555555', N'3322332233', N'r@r.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (36, N'1002295548', CAST(N'2019-10-02 07:29:55.483' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'11225', N'2222222222', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2008, 2008, N'1         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'testq', N'211111', N'1122222222', N't@r.com', NULL, 1, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (37, N'1002405034', CAST(N'2019-10-02 07:40:50.343' AS DateTime), 1, 2008, 2, CAST(N'2019-12-31' AS Date), N'55555', N'44444444444', N'test', N'test', N'tet', 0, 0, 0, N'test', N'test', 1, 2008, 2013, N'2         ', N'2', N'1', N'2', N'2         ', N'1', N'1', N'2', N'test', N'778899', N'4455667788', N'e@e.com', NULL, 2, 2, 1, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (38, N'1002473413', CAST(N'2019-10-02 23:47:34.150' AS DateTime), 1, 2008, 2, CAST(N'2019-10-04' AS Date), N'11223', N'12345678', N'test', N'test', N'test', 0, 0, 0, N'Aert', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'2         ', N'1', N'1', N'1', N'test', N'112233', N'54545454544', N'ee@ee.com', NULL, 1, 2, 1, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (39, N'1002475774', CAST(N'2019-10-02 23:47:57.747' AS DateTime), 1, 2008, 2, CAST(N'2019-10-04' AS Date), N'11223', N'12345678', N'test', N'test', N'test', 0, 0, 0, N'Aert', N'test', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'2         ', N'1', N'1', N'1', N'test', N'112233', N'54545454544', N'ee@ee.com', NULL, 1, 2, 1, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (40, N'1003372137', CAST(N'2019-10-03 00:37:21.380' AS DateTime), 1, 2008, 1, CAST(N'2019-12-31' AS Date), N'12345', N'1111112223', N'test', N'test', N'test', 0, 0, 0, N'test', N'test', 1, 2013, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'test', N'556678', N'33333334454', N't@r.com', NULL, 1, 2, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
+GO
+INSERT [dbo].[ApplicationMaster] ([ApplicationId], [ApplicationNumber], [EntryDate], [BoardId], [PassingYearId], [ExamType], [BOD], [RollCode], [RollNumber], [ApplicantName], [FatherName], [MotherName], [S10MaxiMarks], [S10TotalMarks], [Is10Compartmentally], [SchoolName], [SchoolAddress], [DistrictId], [YearOfJoin], [YearOfLeaving], [Gender], [MotherTongue], [Nationality], [Religion], [BloodGroup], [State], [District], [Block], [HouseAddress], [PinCode], [MobileNo], [Email], [TelephoneNo], [ReservationId], [EWS], [SpecialAbied], [IsCondition1], [IsCondition2], [IsActive], [UpdateDate], [Photo], [Signature], [StudentSubjects]) VALUES (41, N'1004131755', CAST(N'2019-10-04 23:13:17.557' AS DateTime), 1, 2008, 1, CAST(N'2019-10-03' AS Date), N'123456', N'121221212121', N'test', N'test', N'test', 0, 0, 0, N'12', N'232', 1, 2008, 2008, N'2         ', N'2', N'1', N'2', N'1         ', N'1', N'1', N'1', N'dsd', N'999999', N'9999999999', N'd@e.com', NULL, 2, 1, 0, NULL, NULL, 1, NULL, NULL, NULL, NULL)
 GO
 SET IDENTITY_INSERT [dbo].[ApplicationMaster] OFF
 GO
@@ -418,6 +625,19 @@ INSERT [dbo].[ReligionMaster] ([Id], [Name]) VALUES (2, N'Christian')
 GO
 SET IDENTITY_INSERT [dbo].[ReligionMaster] OFF
 GO
+SET IDENTITY_INSERT [dbo].[SectionMaster] ON 
+
+GO
+INSERT [dbo].[SectionMaster] ([Id], [Name]) VALUES (1, N'COMPULSORY')
+GO
+INSERT [dbo].[SectionMaster] ([Id], [Name]) VALUES (2, N'LANGUAGE & LITERATURE (L&L)')
+GO
+INSERT [dbo].[SectionMaster] ([Id], [Name]) VALUES (3, N'COMPULSORY OPTIONAL')
+GO
+INSERT [dbo].[SectionMaster] ([Id], [Name]) VALUES (4, N'ADDITIONAL 1')
+GO
+SET IDENTITY_INSERT [dbo].[SectionMaster] OFF
+GO
 SET IDENTITY_INSERT [dbo].[StateMaster] ON 
 
 GO
@@ -433,6 +653,57 @@ INSERT [dbo].[StreamMaster] ([StreamId], [StreamName], [IsActive]) VALUES (2, N'
 GO
 INSERT [dbo].[StreamMaster] ([StreamId], [StreamName], [IsActive]) VALUES (3, N'Arts', 1)
 GO
+SET IDENTITY_INSERT [dbo].[SubjectMaster] ON 
+
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (1, N'M.B.-ALT ENGLISH', N'102')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (2, N'M.B.-ALT URDU', N'103')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (3, N'M.B.-ALT MAITHILI', N'104')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (4, N'MATHEMATICS', N'121')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (5, N'ENGLISH ', N'105')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (6, N'URDU', N'107')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (7, N'SANSKRIT', N'109')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (8, N'MAGAHI', N'111')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (9, N'ARABIC', N'113')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (10, N'PALI', N'115')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (11, N'HINDI', N'106')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (12, N'MAITHILI', N'108')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (13, N'PRAKRIT', N'110')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (14, N'BHOJPURI', N'112')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (15, N'PERSIAN', N'114')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (16, N'BANGLA', N'116')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (17, N'PHYSICS', N'117')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (18, N'CHEMISTRY', N'118')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (19, N'BIOLOGY', N'119')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (20, N'AGRICULTURE', N'120')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (21, N'MATHEMATICS', N'121')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (22, N'COMPUTER SCIENCE', N'122')
+GO
+INSERT [dbo].[SubjectMaster] ([Id], [Subject], [Code]) VALUES (23, N'WEB TECH.', N'123')
+GO
+SET IDENTITY_INSERT [dbo].[SubjectMaster] OFF
+GO
 INSERT [dbo].[YearMaster] ([YearId], [Year]) VALUES (1, 2008)
 GO
 INSERT [dbo].[YearMaster] ([YearId], [Year]) VALUES (2, 2010)
@@ -443,7 +714,17 @@ INSERT [dbo].[YearMaster] ([YearId], [Year]) VALUES (4, 2012)
 GO
 INSERT [dbo].[YearMaster] ([YearId], [Year]) VALUES (5, 2013)
 GO
-/****** Object:  StoredProcedure [dbo].[GetAutoCompleteData]    Script Date: 9/26/2019 8:53:08 AM ******/
+ALTER TABLE [dbo].[ApplicantSubject]  WITH CHECK ADD  CONSTRAINT [FK_ApplicantSubject_ApplicationMaster] FOREIGN KEY([ApplicationId])
+REFERENCES [dbo].[ApplicationMaster] ([ApplicationId])
+GO
+ALTER TABLE [dbo].[ApplicantSubject] CHECK CONSTRAINT [FK_ApplicantSubject_ApplicationMaster]
+GO
+ALTER TABLE [dbo].[ApplicantSubject]  WITH CHECK ADD  CONSTRAINT [FK_ApplicantSubject_SectionMaster] FOREIGN KEY([SectionId])
+REFERENCES [dbo].[SectionMaster] ([Id])
+GO
+ALTER TABLE [dbo].[ApplicantSubject] CHECK CONSTRAINT [FK_ApplicantSubject_SectionMaster]
+GO
+/****** Object:  StoredProcedure [dbo].[GetAutoCompleteData]    Script Date: 10/5/2019 8:56:39 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
